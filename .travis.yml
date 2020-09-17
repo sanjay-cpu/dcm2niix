@@ -6,6 +6,19 @@ git:
 matrix:
   include:
     - os: linux
+      arch: amd64
+      dist: trusty
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5 # support c++14
+      env:
+         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+         - TARGET=lnx
+    - os: linux
+      arch: ppc64le
       dist: trusty
       addons:
         apt:
