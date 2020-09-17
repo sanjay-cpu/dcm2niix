@@ -33,6 +33,9 @@ matrix:
       osx_image: xcode8.3 # Tracvis default: OS X 10.12.6 and Xcode 8.3.3
       env: TARGET=mac
 
+before_script:
+  - if [ "$TRAVIS_ARCH" = "ppc64le" ]; then sudo apt-get update; sudo apt-get install gcc-5-locales gcc-5-doc libstdc++6-5-dbg libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan2-dbg liblsan0-dbg libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx0-dbg libquadmath0-dbg libstdc++-5-doc; fi
+
 before_install:
   - eval "${MATRIX_EVAL}"
   - git submodule update --init --depth=3 dcm_qa
